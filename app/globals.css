@@ -12,9 +12,9 @@
   --danger: #c9877e;
   --grain-opacity: 0.07;
   --photo-filter: saturate(0.55) contrast(0.92) brightness(0.95);
-  --hand: var(--font-hand), "Segoe Script", "Bradley Hand", cursive;
-  --serif: var(--font-serif), Georgia, "Times New Roman", serif;
-  --mono: var(--font-mono), "Courier New", ui-monospace, monospace;
+  --hand: "La Belle Aurore", "Segoe Script", "Bradley Hand", cursive;
+  --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: "Courier Prime", "Courier New", ui-monospace, monospace;
   --col: 36rem;
   --noise: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   color-scheme: dark;
