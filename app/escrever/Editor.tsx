@@ -113,9 +113,9 @@ export default function Editor({ post }: { post?: Post }) {
         </div>
       </div>
 
-      <div hidden={type !== "photo"}>
+      <div hidden={type === "quote"}>
         <div className="field">
-          <label htmlFor="f-photo">foto</label>
+          <label htmlFor="f-photo">{type === "text" ? "foto (opcional)" : "foto"}</label>
           <label
             className={`drop${over ? " over" : ""}`}
             onDragEnter={() => setOver(true)}
@@ -140,12 +140,41 @@ export default function Editor({ post }: { post?: Post }) {
             )}
             <input id="f-photo" type="file" accept="image/*" onChange={(e) => onFile(e.target.files?.[0])} />
           </label>
-          <span className="hint">{preview ? "toque na foto pra trocar" : "a foto ganha grão e fica levemente dessaturada sozinha"}</span>
+          <div className="photo-tools">
+            <span className="hint">
+              {preview
+                ? "toque na foto pra trocar"
+                : type === "text"
+                  ? "aparece entre o título e o texto"
+                  : "a foto ganha grão e fica levemente dessaturada sozinha"}
+            </span>
+            {preview && !uploading && (
+              <button
+                type="button"
+                onClick={() => {
+                  setPhoto(null);
+                  setPreview(null);
+                }}
+              >
+                tirar foto
+              </button>
+            )}
+          </div>
           {uploadError && <p className="error">{uploadError}</p>}
         </div>
+      </div>
+
+      <div hidden={type !== "photo"}>
         <div className="field">
-          <label htmlFor="f-caption">legenda</label>
-          <input id="f-caption" name="caption" defaultValue={post?.caption ?? ""} placeholder="uma frase curta" autoComplete="off" />
+          <label htmlFor="f-caption">texto curto</label>
+          <textarea
+            id="f-caption"
+            name="caption"
+            className="short"
+            defaultValue={post?.caption ?? ""}
+            placeholder="uma legenda, ou umas linhas sobre a foto"
+          />
+          <span className="hint">opcional. deixe uma linha em branco pra começar outro parágrafo</span>
         </div>
       </div>
 

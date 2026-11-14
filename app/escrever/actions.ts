@@ -51,14 +51,16 @@ export async function savePost(_prev: SaveState, fd: FormData): Promise<SaveStat
     return { error: "o rascunho está vazio." };
   }
 
+  // Texto e foto podem ter imagem; frase solta não.
+  const withPhoto = type !== "quote";
   const fields = {
     type,
     title: type === "text" ? title || null : null,
     body: type === "photo" ? null : body || null,
     caption: type === "photo" ? caption || null : null,
-    photo_path: type === "photo" ? photo_path : null,
-    photo_width: type === "photo" ? int(fd, "photo_width") : null,
-    photo_height: type === "photo" ? int(fd, "photo_height") : null,
+    photo_path: withPhoto ? photo_path : null,
+    photo_width: withPhoto && photo_path ? int(fd, "photo_width") : null,
+    photo_height: withPhoto && photo_path ? int(fd, "photo_height") : null,
     tags,
   };
 

@@ -15,6 +15,24 @@ function Tags({ tags }: { tags: string[] }) {
   );
 }
 
+function Photo({ post }: { post: PublishedPost }) {
+  const src = photoUrl(post.photo_path);
+  if (!src) return null;
+  return (
+    <figure className="photo">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={src}
+        alt={post.caption || post.title || "foto"}
+        width={post.photo_width ?? undefined}
+        height={post.photo_height ?? undefined}
+        loading="lazy"
+        decoding="async"
+      />
+    </figure>
+  );
+}
+
 export default function PostView({ post, full = false }: { post: PublishedPost; full?: boolean }) {
   const href = `/post/${post.slug}`;
   const date = (
@@ -36,24 +54,17 @@ export default function PostView({ post, full = false }: { post: PublishedPost; 
   }
 
   if (post.type === "photo") {
-    const src = photoUrl(post.photo_path);
     return (
       <article className="post post--photo">
         {date}
-        {src && (
-          <figure className="photo" style={{ marginBottom: 0 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={src}
-              alt={post.caption || "foto"}
-              width={post.photo_width ?? undefined}
-              height={post.photo_height ?? undefined}
-              loading="lazy"
-              decoding="async"
-            />
-          </figure>
+        <Photo post={post} />
+        {post.caption && (
+          <div className="caption">
+            {paragraphs(post.caption).map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
         )}
-        {post.caption && <p className="caption">{post.caption}</p>}
         <Tags tags={post.tags} />
       </article>
     );
@@ -67,6 +78,7 @@ export default function PostView({ post, full = false }: { post: PublishedPost; 
     <article className="post post--text">
       {date}
       <Title className="post-title">{full ? post.title : <Link href={href}>{post.title}</Link>}</Title>
+      <Photo post={post} />
       <div className="body">
         {shown.map((p, i) => (
           <p key={i}>{p}</p>

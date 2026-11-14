@@ -95,10 +95,15 @@ a:hover { color: var(--strong); text-decoration-color: var(--accent); }
 .tags a { text-decoration: none; }
 .tags a::before { content: "#"; opacity: 0.55; }
 
-.photo { margin: 0.75rem calc(-1 * min(3rem, 4vw)) 0; position: relative; overflow: hidden; background: var(--surface); }
+.photo { margin: 0.75rem calc(-1 * min(3rem, 4vw)) 0; padding: 0; position: relative; overflow: hidden; background: var(--surface); }
 .photo img { display: block; width: 100%; height: auto; filter: var(--photo-filter); }
 .photo::after { content: ""; position: absolute; inset: 0; background-image: var(--noise); opacity: 0.22; mix-blend-mode: overlay; pointer-events: none; }
-.caption { font-style: italic; color: var(--muted); margin: 0.9rem 0 0; font-size: 0.98rem; white-space: pre-line; }
+.caption { font-style: italic; color: var(--muted); margin-top: 0.9rem; font-size: 0.98rem; }
+.caption p { margin: 0 0 0.8em; white-space: pre-line; overflow-wrap: break-word; }
+.caption p:last-child { margin-bottom: 0; }
+.post--text .photo { margin-bottom: 1.4rem; }
+.photo-tools { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.photo-tools button { background: none; border: 0; color: var(--danger); font-family: var(--mono); font-size: 0.72rem; cursor: pointer; padding: 0; }
 
 .post--quote { text-align: center; padding-block: 3.75rem; }
 .solta { font-family: var(--serif); font-style: italic; font-weight: 300; color: var(--strong);
@@ -158,6 +163,7 @@ a:hover { color: var(--strong); text-decoration-color: var(--accent); }
   font-family: var(--serif); font-size: 1.05rem; font-weight: 300; padding: 0.7rem 0.85rem; line-height: 1.6; }
 .field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
 .field textarea { min-height: 12rem; resize: vertical; }
+.field textarea.short { min-height: 6.5rem; }
 .field textarea.quote { min-height: 5rem; font-style: italic; font-size: 1.3rem; text-align: center; }
 .hint { font-family: var(--mono); font-size: 0.7rem; color: var(--muted); }
 .field label.drop { text-transform: none; letter-spacing: 0; font-family: var(--serif); font-size: 1rem; }

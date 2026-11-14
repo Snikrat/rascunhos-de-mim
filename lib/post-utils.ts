@@ -25,9 +25,8 @@ export type PublishedPost = Post & { published_at: string };
 /** Nome curto para listas (arquivo, anterior/próximo, rascunhos). */
 export function postLabel(p: Pick<Post, "type" | "title" | "body" | "caption">): string {
   if (p.type === "text") return p.title?.trim() || "sem título";
-  if (p.type === "photo") return p.caption?.trim() || "foto";
-  const t = p.body?.trim() ?? "";
-  return t.length > 70 ? t.slice(0, 68) + "…" : t || "frase";
+  const t = (p.type === "photo" ? p.caption : p.body)?.trim().split("\n")[0] ?? "";
+  return t.length > 70 ? t.slice(0, 68) + "…" : t || (p.type === "photo" ? "foto" : "frase");
 }
 
 export function photoUrl(path: string | null): string | null {
