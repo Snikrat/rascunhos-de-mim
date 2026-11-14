@@ -14,10 +14,10 @@ function parts(iso: string) {
   return { y: get("year"), m: get("month") - 1, d: get("day"), h: get("hour"), min: get("minute") };
 }
 
-/** "14 de novembro, 3h12" (no fuso de São Paulo). */
+/** "14 de novembro de 2026, 3h12" (no fuso de São Paulo). */
 export function formatDate(iso: string): string {
-  const { d, m, h, min } = parts(iso);
-  return `${d} de ${MESES[m]}, ${h}h${String(min).padStart(2, "0")}`;
+  const { y, d, m, h, min } = parts(iso);
+  return `${d} de ${MESES[m]} de ${y}, ${h}h${String(min).padStart(2, "0")}`;
 }
 
 /** "novembro de 2026" e a chave "2026-11" para agrupar o arquivo. */
