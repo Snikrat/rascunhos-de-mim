@@ -10,7 +10,7 @@ Feito com Next.js, hospedado na Vercel, com Supabase para login, posts e fotos. 
 - **Início**: posts um embaixo do outro, com uma frase do topo que muda a cada visita (edite em `lib/frases.ts`).
 - **Três tipos de post**: texto, foto (com grão e cor apagada) e frase solta.
 - **Página de cada post**, com anterior e próximo.
-- **Arquivo** por mês, **tags** e **sobre mim** (edite o texto em `app/sobre/page.tsx`).
+- **Arquivo** por mês, **tags** e **sobre mim** (editável em `/escrever` > editar sobre mim).
 - **Área de escrever** (`/escrever`): escolher o tipo, escrever, subir foto, pôr tags, publicar ou guardar rascunho, editar e apagar.
 - Funciona bem no celular: menu recolhido, botões grandes, fotos reduzidas no próprio aparelho antes de subir.
 
@@ -26,7 +26,7 @@ Sem o Supabase configurado, o site abre em **modo demonstração**, com posts de
    ```sql
    insert into public.site_owners (email) values ('seu-email@gmail.com');
    ```
-4. Em **Project Settings > API**, copie a *Project URL* e a chave *anon public*.
+4. No botão **Connect** (topo do painel) > **Framework** > **Next.js**, copie a URL do projeto e a chave *publishable* (em projetos antigos, *anon*).
 
 ### 2. Login com Google
 
@@ -43,11 +43,17 @@ Sem o Supabase configurado, o site abre em **modo demonstração**, com posts de
    | nome | valor |
    | --- | --- |
    | `NEXT_PUBLIC_SUPABASE_URL` | a Project URL do Supabase |
-   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | a chave anon public |
+   | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | a chave publishable (ou use `NEXT_PUBLIC_SUPABASE_ANON_KEY` com a chave anon) |
    | `OWNER_EMAIL` | o seu e-mail Google |
    | `NEXT_PUBLIC_SITE_URL` | o endereço do site, ex. `https://rascunhosdemim.vercel.app` |
 
 3. Clique em **Deploy**. Depois, entre em `/entrar` no site.
+
+## Atualizações do banco
+
+Quem já rodou o `schema.sql` antes de uma mudança roda só os arquivos novos de `supabase/migrations/`, em ordem, no SQL Editor.
+
+- `002_sobre.sql`: texto editável do "sobre mim".
 
 ## Rodar no computador
 
