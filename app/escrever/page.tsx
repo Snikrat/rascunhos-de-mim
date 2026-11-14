@@ -21,9 +21,12 @@ export default async function Escrever({ searchParams }: { searchParams: Promise
       <h1 className="page-title">escrever</h1>
       <div className="whoami">
         <span>escrevendo como {owner.user_metadata?.name ?? owner.email}</span>
-        <form action="/sair" method="post">
-          <button type="submit">sair</button>
-        </form>
+        <span className="whoami-links">
+          <Link href="/escrever/sobre">editar sobre mim</Link>
+          <form action="/sair" method="post">
+            <button type="submit">sair</button>
+          </form>
+        </span>
       </div>
       {salvo && <p className="note" role="status">rascunho guardado.</p>}
       {apagado && <p className="note" role="status">post apagado.</p>}

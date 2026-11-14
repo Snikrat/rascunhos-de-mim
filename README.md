@@ -10,7 +10,7 @@ Feito com Next.js, hospedado na Vercel, com Supabase para login, posts e fotos. 
 - **Início**: posts um embaixo do outro, com uma frase do topo que muda a cada visita (edite em `lib/frases.ts`).
 - **Três tipos de post**: texto, foto (com grão e cor apagada) e frase solta.
 - **Página de cada post**, com anterior e próximo.
-- **Arquivo** por mês, **tags** e **sobre mim** (edite o texto em `app/sobre/page.tsx`).
+- **Arquivo** por mês, **tags** e **sobre mim** (editável em `/escrever` > editar sobre mim).
 - **Área de escrever** (`/escrever`): escolher o tipo, escrever, subir foto, pôr tags, publicar ou guardar rascunho, editar e apagar.
 - Funciona bem no celular: menu recolhido, botões grandes, fotos reduzidas no próprio aparelho antes de subir.
 
@@ -48,6 +48,12 @@ Sem o Supabase configurado, o site abre em **modo demonstração**, com posts de
    | `NEXT_PUBLIC_SITE_URL` | o endereço do site, ex. `https://rascunhosdemim.vercel.app` |
 
 3. Clique em **Deploy**. Depois, entre em `/entrar` no site.
+
+## Atualizações do banco
+
+Quem já rodou o `schema.sql` antes de uma mudança roda só os arquivos novos de `supabase/migrations/`, em ordem, no SQL Editor.
+
+- `002_sobre.sql`: texto editável do "sobre mim".
 
 ## Rodar no computador
 

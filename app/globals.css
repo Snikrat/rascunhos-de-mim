@@ -153,6 +153,7 @@ a:hover { color: var(--strong); text-decoration-color: var(--accent); }
 
 .whoami { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem 1rem; flex-wrap: wrap; font-family: var(--mono); font-size: 0.76rem; color: var(--muted); margin-bottom: 1.5rem; }
 .whoami form { display: inline; }
+.whoami-links { display: inline-flex; gap: 1.2rem; align-items: baseline; }
 .whoami button, .whoami a { background: none; border: 0; color: var(--muted); font: inherit; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line); padding: 0; }
 .types { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
 .types button { font-family: var(--mono); font-size: 0.78rem; background: none; color: var(--muted); border: 1px solid var(--line); padding: 0.45rem 0.9rem; cursor: pointer; }
