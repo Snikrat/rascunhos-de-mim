@@ -1,15 +1,10 @@
 import type { Metadata, Viewport } from "next";
-import { Courier_Prime, La_Belle_Aurore, Newsreader } from "next/font/google";
 import Link from "next/link";
 import Topbar from "@/components/Topbar";
 import Masthead from "@/components/Masthead";
 import { SITE_NAME } from "@/lib/config";
 import { getOwner } from "@/lib/supabase/server";
 import "./globals.css";
-
-const hand = La_Belle_Aurore({ weight: "400", subsets: ["latin"], variable: "--font-hand", display: "swap" });
-const serif = Newsreader({ subsets: ["latin"], style: ["normal", "italic"], weight: ["300", "400", "500"], variable: "--font-serif", display: "swap" });
-const mono = Courier_Prime({ weight: "400", subsets: ["latin"], style: ["normal", "italic"], variable: "--font-mono", display: "swap" });
 
 export const dynamic = "force-dynamic";
 
@@ -30,15 +25,23 @@ export const viewport: Viewport = {
   ],
 };
 
+// Fontes carregadas direto do Google Fonts (o next/font quebra o build com Turbopack na Vercel).
+const FONTS =
+  "https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Courier+Prime:ital@0;1&display=swap";
+
 // Aplica o tema salvo antes de pintar a página, para não piscar.
 const themeScript = `try{var t=localStorage.getItem("rdm-theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)}catch(e){}`;
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const owner = await getOwner();
   return (
-    <html lang="pt-BR" className={`${hand.variable} ${serif.variable} ${mono.variable}`} suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* eslint-disable-next-line @next/next/no-page-custom-font */}
+        <link rel="stylesheet" href={FONTS} />
       </head>
       <body suppressHydrationWarning>
         <div className="wrap">
