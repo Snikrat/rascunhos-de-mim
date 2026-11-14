@@ -1,5 +1,7 @@
 export const SUPABASE_URL = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
-export const SUPABASE_ANON_KEY = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
+// O Supabase chama essa chave de "publishable" nos projetos novos e de "anon" nos antigos; aceita as duas.
+export const SUPABASE_ANON_KEY =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ?? process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? "";
 
 /** Sem Supabase configurado o site roda em "modo demonstração", com posts de exemplo. */
 export const isConfigured = Boolean(SUPABASE_URL && SUPABASE_ANON_KEY);

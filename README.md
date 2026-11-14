@@ -26,7 +26,7 @@ Sem o Supabase configurado, o site abre em **modo demonstração**, com posts de
    ```sql
    insert into public.site_owners (email) values ('seu-email@gmail.com');
    ```
-4. Em **Project Settings > API**, copie a *Project URL* e a chave *anon public*.
+4. No botão **Connect** (topo do painel) > **Framework** > **Next.js**, copie a URL do projeto e a chave *publishable* (em projetos antigos, *anon*).
 
 ### 2. Login com Google
 
@@ -43,7 +43,7 @@ Sem o Supabase configurado, o site abre em **modo demonstração**, com posts de
    | nome | valor |
    | --- | --- |
    | `NEXT_PUBLIC_SUPABASE_URL` | a Project URL do Supabase |
-   | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | a chave anon public |
+   | `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | a chave publishable (ou use `NEXT_PUBLIC_SUPABASE_ANON_KEY` com a chave anon) |
    | `OWNER_EMAIL` | o seu e-mail Google |
    | `NEXT_PUBLIC_SITE_URL` | o endereço do site, ex. `https://rascunhosdemim.vercel.app` |
 
