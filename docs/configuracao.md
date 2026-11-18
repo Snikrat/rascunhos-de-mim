@@ -7,7 +7,7 @@ Feito com Next.js, hospedado na Vercel, com Supabase para login, posts e fotos. 
 
 ## O que tem
 
-- **Início**: posts um embaixo do outro, com uma frase do topo que muda a cada visita (edite em `lib/frases.ts`).
+- **Início**: posts um embaixo do outro, com uma frase fixa no topo (edite em `lib/frases.ts`).
 - **Três tipos de post**: texto, foto (com grão e cor apagada) e frase solta.
 - **Página de cada post**, com anterior e próximo.
 - **Arquivo** por mês, **tags** e **sobre mim** (editável em `/escrever` > editar sobre mim).
