@@ -22,4 +22,3 @@ só lê devagar.
 
 <br>
 
-[rascunhos-de-mim.vercel.app](https://rascunhos-de-mim.vercel.app)
