@@ -41,12 +41,3 @@ export function slugify(text: string): string {
       .replace(/-$/, "") || "post"
   );
 }
-
-export function normalizeTags(raw: string): string[] {
-  const seen = new Set<string>();
-  for (const t of raw.split(",")) {
-    const tag = t.trim().replace(/^#/, "").toLowerCase();
-    if (tag && tag.length <= 40) seen.add(tag);
-  }
-  return [...seen].slice(0, 12);
-}

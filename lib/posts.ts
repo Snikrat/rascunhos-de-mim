@@ -28,7 +28,7 @@ export async function listPublished(page = 1): Promise<{ posts: PublishedPost[];
   return { posts: rows.slice(0, PAGE_SIZE), hasMore: rows.length > PAGE_SIZE };
 }
 
-/** Lista leve de tudo que está publicado (arquivo e tags). */
+/** Lista leve de tudo que está publicado (arquivo). */
 export async function listAllPublished(): Promise<PublishedPost[]> {
   if (!isConfigured) return demoPublished();
   const supabase = await createClient();
@@ -36,19 +36,6 @@ export async function listAllPublished(): Promise<PublishedPost[]> {
     .from("posts")
     .select(COLUMNS)
     .eq("status", "published")
-    .order("published_at", { ascending: false });
-  if (error) throw error;
-  return (data ?? []) as PublishedPost[];
-}
-
-export async function listByTag(tag: string): Promise<PublishedPost[]> {
-  if (!isConfigured) return demoPublished().filter((p) => p.tags.includes(tag));
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("posts")
-    .select(COLUMNS)
-    .eq("status", "published")
-    .contains("tags", [tag])
     .order("published_at", { ascending: false });
   if (error) throw error;
   return (data ?? []) as PublishedPost[];

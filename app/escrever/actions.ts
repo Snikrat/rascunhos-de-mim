@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { PHOTO_BUCKET } from "@/lib/config";
-import { normalizeTags, slugify } from "@/lib/format";
+import { slugify } from "@/lib/format";
 import { postLabel, type PostType } from "@/lib/post-utils";
 import { createClient, getOwner } from "@/lib/supabase/server";
 
@@ -41,7 +41,6 @@ export async function savePost(_prev: SaveState, fd: FormData): Promise<SaveStat
   const body = str(fd, "body").replace(/\r\n/g, "\n").trim();
   const caption = str(fd, "caption").trim();
   const photo_path = str(fd, "photo_path") || null;
-  const tags = normalizeTags(str(fd, "tags"));
 
   if (publish) {
     if (type === "text" && !body) return { error: "escreve alguma coisa antes de publicar." };
@@ -61,7 +60,6 @@ export async function savePost(_prev: SaveState, fd: FormData): Promise<SaveStat
     photo_path: withPhoto ? photo_path : null,
     photo_width: withPhoto && photo_path ? int(fd, "photo_width") : null,
     photo_height: withPhoto && photo_path ? int(fd, "photo_height") : null,
-    tags,
   };
 
   let slug: string;

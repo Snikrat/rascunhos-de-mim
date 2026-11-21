@@ -2,19 +2,6 @@ import Link from "next/link";
 import { formatDate, paragraphs } from "@/lib/format";
 import { photoUrl, type PublishedPost } from "@/lib/posts";
 
-function Tags({ tags }: { tags: string[] }) {
-  if (!tags.length) return null;
-  return (
-    <div className="tags">
-      {tags.map((t) => (
-        <Link key={t} href={`/tag/${encodeURIComponent(t)}`}>
-          {t}
-        </Link>
-      ))}
-    </div>
-  );
-}
-
 function Photo({ post }: { post: PublishedPost }) {
   const src = photoUrl(post.photo_path);
   if (!src) return null;
@@ -48,7 +35,6 @@ export default function PostView({ post, full = false }: { post: PublishedPost; 
       <article className="post post--quote">
         <p className="solta">{post.body}</p>
         {date}
-        <Tags tags={post.tags} />
       </article>
     );
   }
@@ -65,7 +51,6 @@ export default function PostView({ post, full = false }: { post: PublishedPost; 
             ))}
           </div>
         )}
-        <Tags tags={post.tags} />
       </article>
     );
   }
@@ -89,7 +74,6 @@ export default function PostView({ post, full = false }: { post: PublishedPost; 
           continuar lendo
         </Link>
       )}
-      <Tags tags={post.tags} />
     </article>
   );
 }

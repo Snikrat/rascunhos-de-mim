@@ -10,8 +10,8 @@ Feito com Next.js, hospedado na Vercel, com Supabase para login, posts e fotos. 
 - **Início**: posts um embaixo do outro, com uma frase fixa no topo (edite em `lib/frases.ts`).
 - **Três tipos de post**: texto, foto (com grão e cor apagada) e frase solta.
 - **Página de cada post**, com anterior e próximo.
-- **Arquivo** por mês, **tags** e **sobre mim** (editável em `/escrever` > editar sobre mim).
-- **Área de escrever** (`/escrever`): escolher o tipo, escrever, subir foto, pôr tags, publicar ou guardar rascunho, editar e apagar.
+- **Arquivo** por mês e **sobre mim** (editável em `/escrever` > editar sobre mim).
+- **Área de escrever** (`/escrever`): escolher o tipo, escrever, subir foto, publicar ou guardar rascunho, editar e apagar.
 - Funciona bem no celular: menu recolhido, botões grandes, fotos reduzidas no próprio aparelho antes de subir.
 
 Sem o Supabase configurado, o site abre em **modo demonstração**, com posts de exemplo.

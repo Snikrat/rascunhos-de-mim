@@ -178,12 +178,6 @@ export default function Editor({ post }: { post?: Post }) {
         </div>
       </div>
 
-      <div className="field">
-        <label htmlFor="f-tags">tags</label>
-        <input id="f-tags" name="tags" defaultValue={post?.tags.join(", ") ?? ""} placeholder="saudade, madrugada" autoComplete="off" autoCapitalize="none" />
-        <span className="hint">separe com vírgula</span>
-      </div>
-
       <div className="actions">
         <button className="btn primary" type="submit" name="intent" value="publish" disabled={busy}>
           {pending ? "salvando…" : isPublished ? "salvar" : "publicar"}
